@@ -13,11 +13,6 @@ export default function AddBookPage({ addBook }) {
   });
 
   const cleanISBN = (isbn) => isbn?.replace(/[-\s]/g, "");
-//   const coverSources = [
-//     `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`,
-//     `https://books.google.com/books/content?vid=ISBN:${isbn}&printsec=frontcover&img=1&zoom=1`,
-//   ];
-
 
   function handleChange(e) {
     setForm({
@@ -29,14 +24,12 @@ export default function AddBookPage({ addBook }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // const isbn = form.isbn?.trim();
     const isbn = cleanISBN(form.isbn?.trim());
 
     const newBook = {
       // id: crypto.randomUUID(),
       title: form.title,
       author: form.author,
-      // notes: form.notes,
       content: form.notes,
       status: "reading",
       rating: 0,
@@ -44,10 +37,6 @@ export default function AddBookPage({ addBook }) {
       coverUrl: isbn
       ? `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
       : null,
-      // createdAt: Date.now(),
-      // updatedAt: null,
-      // createdAt: Number(book.created_at),
-      // updatedAt: Number(book.updated_at)
     };
 
     addBook(newBook);
@@ -63,10 +52,6 @@ export default function AddBookPage({ addBook }) {
         ← Back
       </button>
 
-
-      
-
-      {/* <h1 className="text-2xl font-semibold mb-6">Add Book</h1> */}
 
       <form
         onSubmit={handleSubmit}
@@ -123,3 +108,4 @@ export default function AddBookPage({ addBook }) {
     </div>
   );
 }
+
