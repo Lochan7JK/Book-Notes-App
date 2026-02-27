@@ -10,8 +10,7 @@ export default function BookDetailPage({ books, deleteBook }) {
   const navigate = useNavigate();
   const [showDelete, setShowDelete] = useState(false);
 
-//   const book = books.find((b) => b.id === id);
-    const book = books.find((b) => b.id === Number(id));
+  const book = books.find((b) => b.id === Number(id));
 
   if (!book) {
     return <p className="p-6">Book not found.</p>;
@@ -21,10 +20,8 @@ export default function BookDetailPage({ books, deleteBook }) {
     return new Date(ts).toLocaleString();
 }
 
-// const hasISBN = book.isbn && book.isbn.trim() !== "";
-// const hasCover = book.coverUrl && book.coverUrl.trim() !== "";
-    const cleanISBN = book.isbn?.replace(/[-\s]/g, "");
-    const coverUrl = cleanISBN
+  const cleanISBN = book.isbn?.replace(/[-\s]/g, "");
+  const coverUrl = cleanISBN
     ? `https://covers.openlibrary.org/b/isbn/${cleanISBN}-L.jpg`
     : null;
 
@@ -46,41 +43,6 @@ export default function BookDetailPage({ books, deleteBook }) {
 
 
                 <div className="w-60 h-90 bg-[#fef7f2] rounded-lg overflow-hidden flex-shrink-0">
-                    {/* {book.coverUrl ? (
-                        <img
-                            src={book.coverUrl || defaultCover}
-                            alt={book.title}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            onError={(e) => {
-                            e.target.src = defaultCover;
-                        }}
-                        />
-                     ) : (
-                        <PlaceholderCover title={book.title} />
-                    )} */}
-
-                    {/* {hasCover ? (
-                        <img
-                            src={book.coverUrl || DefaultCover}
-                            alt={book.title}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            onError={(e) => {
-                                e.target.src = DefaultCover;
-                            }}
-                        />
-                        ) : hasISBN ? ( */}
-                        {/* ISBN exists but no cover → Gradient */}
-                        {/* <PlaceholderCover title={book.title} />
-                        ) : ( */}
-                        {/* No ISBN → Default Image */}
-                        {/* <img
-                            src={DefaultCover}
-                            alt="Default cover"
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                        )
-                    } */}
-
                     {coverUrl ? (
                         <img
                             src={coverUrl || DefaultCover}
@@ -102,7 +64,6 @@ export default function BookDetailPage({ books, deleteBook }) {
                 </div>
 
                 <div className="text-xs text-stone-500 space-y-1 pt-2">
-                    {/* <p>ISBN: {book.isbn || "Not provided"}</p> */}
                     <p>Created At: {formatDateTime(book.createdAt)}</p>
                     <p>
                         Last Updated:{" "}
@@ -120,16 +81,10 @@ export default function BookDetailPage({ books, deleteBook }) {
             <p className="text-sm">Status: {book.status}</p>
             <p className="text-sm">Rating: {book.rating} ⭐</p>
             <p className="text-sm">ISBN: {book.isbn || "Not provided"}</p>
-            {/* <p className="text-sm">Created At: {formatDateTime(book.createdAt)}</p>
-            <p className="text-sm">
-                Last Updated:{" "}
-                {book.updatedAt ? formatDateTime(book.updatedAt) : "Never"}
-            </p> */}
 
             {book.content && (
                 <div>
                     <h2 className="text-sm font-medium mt-4">Notes</h2>
-                    {/* <p className="text-sm text-stone-600">{book.notes}</p> */}
                     <p className="text-sm text-stone-600">{book.content}</p>
                 </div>
             )}
@@ -141,17 +96,6 @@ export default function BookDetailPage({ books, deleteBook }) {
                 >
                     Edit
                 </button>
-
-                {/* INSTANT DELETE BUTTON WITHOUT WARNING MODAL */}
-                {/* <button
-                    onClick={() => {
-                    deleteBook(book.id);
-                    navigate("/");
-                    }}
-                    className="px-4 py-2 text-sm rounded-lg border"
-                >
-                    Delete
-                </button> */}
 
                 <button
                     onClick={() => setShowDelete(true)}
@@ -217,17 +161,9 @@ export default function BookDetailPage({ books, deleteBook }) {
         </motion.div>
         )}
     </AnimatePresence>
-
-    {/* <DeleteModal
-        book={selectedBook}
-        onClose={() => setSelectedBook(null)}
-        onConfirm={() => {
-            deleteBook(selectedBook.id);
-            setSelectedBook(null);
-        }}
-    /> */}
     
 
     </div>
   );
 }
+
