@@ -71,19 +71,24 @@ Frontend runs on:
 
 ---
 
-###💡 What I Learned
+##💡 What I Learned
 -Full REST API development
 -PostgreSQL timestamp handling
 -State normalization in React
 -Full-stack integration
 -Proper project structure for production
 
-###📸 Future Improvements
+##📸 Future Improvements
 📈 Future Improvements
+
 🔐 User authentication (JWT)
+
 📊 Reading dashboard
+
 📁 Pagination
+
 🌙 Dark mode
+
 🔍 Would love your opinion...
 
 👨‍💻 Your fellow mate
