@@ -1,42 +1,3 @@
-// export default function DeleteModal({ book, onClose, onConfirm }) {
-//   if (!book) return null;
-
-//   return (
-//     <div className="fixed inset-0 bg-black/30 flex items-center justify-center">
-      
-//       {/* Modal Panel */}
-//       <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
-        
-//         <h2 className="text-lg font-semibold text-stone-800">
-//           Delete Book
-//         </h2>
-
-//         <p className="text-sm text-stone-600 mt-2">
-//           Are you sure you want to delete{" "}
-//           <span className="font-medium">{book.title}</span>?
-//         </p>
-
-//         <div className="flex justify-end gap-3 mt-6">
-//           <button
-//             onClick={onClose}
-//             className="px-4 py-2 text-sm border border-stone-300 rounded-lg hover:bg-stone-100 transition"
-//           >
-//             Cancel
-//           </button>
-
-//           <button
-//             onClick={onConfirm}
-//             className="px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-500 transition"
-//           >
-//             Delete
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function DeleteModal({ book, onClose, onConfirm }) {
@@ -86,3 +47,4 @@ export default function DeleteModal({ book, onClose, onConfirm }) {
     </AnimatePresence>
   );
 }
+
