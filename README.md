@@ -83,6 +83,19 @@ Frontend runs on:
 -📊 Reading statistics dashboard
 -📁 Pagination
 -🌙 Dark mode
+📈 Future Improvements
+
+🔐 User authentication (JWT)
+
+⭐ Better rating UI
+
+📊 Reading dashboard
+
+📁 Pagination
+
+🌙 Dark mode
+
+🔍 Search & filtering
 -🔍 Would love your opinion...
 
 👨‍💻 Your fellow mate
