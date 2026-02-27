@@ -6,13 +6,11 @@ import { Eye, SquarePen, Trash } from 'lucide-react';
 import DefaultCover from "../assets/default-book-cover.png";
 import PlaceholderCover from "./PlaceholderCover";
 
-// export default function BookCard({ book, deleteBook }) {
 export default function BookCard({ book, requestDelete, updateRating, updateStatus }) {
 
   const navigate = useNavigate();
 
-  // const hasISBN = book.isbn && book.isbn.trim() !== "";
-  // const hasCover = book.coverUrl && book.coverUrl.trim() !== "";
+
   const cleanISBN = book.isbn?.replace(/[-\s]/g, "");
   const coverUrl = cleanISBN
     ? `https://covers.openlibrary.org/b/isbn/${cleanISBN}-L.jpg`
@@ -22,7 +20,6 @@ export default function BookCard({ book, requestDelete, updateRating, updateStat
   const statusStyles = {
     reading: "bg-blue-100 text-blue-700 border border-blue-300",
     finished: "bg-emerald-100 text-emerald-700 border border-emerald-300",
-    // planned: "bg-amber-100 text-amber-700",
   };
 
 
@@ -32,44 +29,7 @@ export default function BookCard({ book, requestDelete, updateRating, updateStat
      className="bg-white rounded-xl shadow-sm border border-stone-200 p-4 flex gap-4 hover:shadow-md transition">
       
       {/* Cover */}
-      {/* <div className="w-24 h-32 bg-amber-100 rounded-lg flex-shrink-0" /> */}
       <div className="w-27 h-40 rounded-lg flex-shrink-0 overflow-hidden bg-[#fef7f2]">
-        {/* {book.coverUrl ? (
-           <img
-              src={book.coverUrl || defaultCover}
-              alt={book.title}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => {
-                e.target.src = defaultCover;
-              }}
-          />
-        ) : 
-        <PlaceholderCover title={book.title} /> } */}
-
-        {/* {hasCover ? (
-            <img
-              src={book.coverUrl || DefaultCover}
-              alt={book.title}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              onError={(e) => {
-                e.target.src = DefaultCover;
-              }}
-            />
-          ) : hasISBN ? ( */}
-
-              {/* ISBN exists but no cover → Gradient */}
-              {/* <PlaceholderCover title={book.title} />
-              ) : ( */}
-
-              {/* No ISBN → Default Image */}
-              {/* <img
-                src={DefaultCover}
-                alt="Default cover"
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-          )
-        } */}
-
         {coverUrl ? (
           <img
             src={coverUrl || DefaultCover}
@@ -102,29 +62,13 @@ export default function BookCard({ book, requestDelete, updateRating, updateStat
             <p className="text-sm text-stone-500">
               by {book.author}
             </p>
-            {/* <p className="text-xs text-stone-400 mt-0.5">
-              Added {formatRelativeTime(book.createdAt)}
-            </p> */}
             <p className="text-xs text-stone-400 mt-1">
               {book.updatedAt
-                // ? `Updated ${formatRelativeTime(book.createdAt, book.updatedAt)}`
                 ? `Updated ${formatRelativeTime(book.updatedAt)}`
                 : `Added ${formatRelativeTime(book.createdAt)}`}
             </p>
 
           </div>
-
-          {/* <StatusBadge status={book.status} /> */}
-          
-          {/* <select
-            value={book.status}
-            
-            onChange={(e) => updateStatus(book.id, e.target.value)}
-            className="text-xs border border-stone-300 rounded-md px-2 py-1"
-          >
-            <option>Reading</option>
-            <option>Finished</option>
-          </select> */}
 
           <div className="relative inline-block">
             <select
@@ -146,7 +90,6 @@ export default function BookCard({ book, requestDelete, updateRating, updateStat
         </div>
 
         <p className="text-sm text-stone-600 mt-2 line-clamp-2">  
-          {/* {book.notes} */}
           {book.content}
         </p>
 
@@ -176,15 +119,7 @@ export default function BookCard({ book, requestDelete, updateRating, updateStat
             </button>
 
 
-            {/* <button
-              onClick={() => deleteBook(book.id)}
-              className="text-red-600 text-sm px-2 hover:opacity-70"
-            >
-              Delete
-            </button> */}
-
             <button
-              // onClick={requestDelete}
               onClick={(e) => {
                 e.stopPropagation();
                 requestDelete();
@@ -200,4 +135,5 @@ export default function BookCard({ book, requestDelete, updateRating, updateStat
       </div>
     </div>
   );
+
 }
