@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Global app theme */
+
+body {
+  background: #fef7f2;   /* warm amber */
+  color: #292524;        /* stone-800 */
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}

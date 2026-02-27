@@ -1,0 +1,4 @@
+During development:
+
+React runs on → localhost:5173
+Express runs on → localhost:3000
