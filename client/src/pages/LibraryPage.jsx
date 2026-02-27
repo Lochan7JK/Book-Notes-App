@@ -8,14 +8,9 @@ import { Funnel } from 'lucide-react';
 import { Search } from 'lucide-react';
 import { ArrowDownUp } from 'lucide-react';
 
-// export default function LibraryPage({ books, deleteBook, updateRating, updateStatus }) {
 export default function LibraryPage({ books,totalBooks, deleteBook, updateRating, updateStatus, filter, setFilter, sortBy, setSortBy, searchQuery, setSearchQuery }) {
 
   const [selectedBook, setSelectedBook] = useState(null);
-
-  // const sortedBooks = [...books].sort(
-  //   (a, b) => b.createdAt - a.createdAt
-  // );
 
   function btn(active) {
     return `px-3 py-1 rounded-lg text-sm border transition ${
@@ -115,15 +110,6 @@ export default function LibraryPage({ books,totalBooks, deleteBook, updateRating
     </div>
 
 
-      {/* <input
-        type="text"
-        placeholder="Search books by title or author..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-full mb-4 px-4 py-2 rounded-lg border text-sm bg-white"
-      /> */}
-
-
       <div className="flex justify-between items-center mb-4">
         <div className="flex gap-2">
 
@@ -154,72 +140,13 @@ export default function LibraryPage({ books,totalBooks, deleteBook, updateRating
         </div>
 
 
-        {/* <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="px-3 py-1 rounded-lg border text-sm bg-white"
-        >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="rating">Rating</option>
-          <option value="az">A → Z</option>
-          <option value="za">Z → A</option>
-        </select> */}
       </div>
-
-
-      {/* {totalBooks === 0 ? (
-        <EmptyState />
-      ) : books.length === 0 ? (
-        <EmptyState
-          title="No matching books"
-          message="No books match your search.Try again with different keywords or clear your search."
-          buttonText="Add book"
-        />
-      ) : (
-        <div className="space-y-4">
-          {books.map((book) => (
-              // <BookCard
-              //   key={book.id}
-              //   book={book}
-              //   deleteBook={deleteBook}
-              //   updateRating={updateRating}
-              //   updateStatus={updateStatus}
-              // />
-
-              <BookCard
-                key={book.id}
-                book={book}
-                requestDelete={() => setSelectedBook(book)}
-                updateRating={updateRating}
-                updateStatus={updateStatus}
-              />
-            ))
-          }
-        </div>
-      )} */}
-
-
 
       {(books.length === 0 || totalBooks === 0) ? (
         <EmptyState />
-        // <EmptyState
-        //   title="No matching books"
-        //   message="No books match your search.Try again with different keywords or clear your search."
-        //   buttonText="Add book"
-        // />
-        // <p className="text-sm text-stone-500">No books match your search.</p>
       ) : (
         <div className="space-y-4">
             {books.map((book) => (
-              // <BookCard
-              //   key={book.id}
-              //   book={book}
-              //   deleteBook={deleteBook}
-              //   updateRating={updateRating}
-              //   updateStatus={updateStatus}
-              // />
-
               <BookCard
                 key={book.id}
                 book={book}
@@ -246,3 +173,4 @@ export default function LibraryPage({ books,totalBooks, deleteBook, updateRating
     </>
   );
 }
+
