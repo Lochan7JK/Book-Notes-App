@@ -71,14 +71,14 @@ Frontend runs on:
 
 ---
 
-##💡 What I Learned
--Full REST API development
--PostgreSQL timestamp handling
--State normalization in React
--Full-stack integration
--Proper project structure for production
+## 💡 What I Learned
+- Full REST API development
+- PostgreSQL timestamp handling
+- State normalization in React
+- Full-stack integration
+- Proper project structure for production
 
-##📸 Future Improvements
+## 📸 Future Improvements
 📈 Future Improvements
 
 🔐 User authentication (JWT)
