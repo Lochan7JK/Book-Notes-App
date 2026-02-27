@@ -1,16 +1,3 @@
-// export default function Footer() {
-//   return (
-//     <footer className="mt-6">
-//       <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-stone-600 flex justify-center">
-        
-//         <p>© {new Date().getFullYear()} Your Reading Collection...</p>
-
-//       </div>
-//     </footer>
-//   );
-// }
-
-
 export default function Footer() {
   return (
     <footer className="mt-10 border-stone-200 bg-[#fef9f7]">
@@ -28,3 +15,4 @@ export default function Footer() {
     </footer>
   );
 }
+
