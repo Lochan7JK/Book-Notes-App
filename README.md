@@ -87,5 +87,5 @@ Frontend runs on:
 - 🔍 Would love your opinion...
 
 👨‍💻 Your fellow mate
-Lochan Singoria
-Full-Stack Developer | React | Node.js | PostgreSQL
+- Lochan Singoria : 
+A Full-Stack Developer | React | Node.js | PostgreSQL
