@@ -1,23 +1,3 @@
-// import Navbar from "./components/Navbar";
-// import LibraryPage from "./pages/LibraryPage";
-// import { Routes, Route } from "react-router-dom";
-// import AddBookPage from "./pages/AddBookPage";
-
-// function App() {
-//   return (
-//     <div className="min-h-screen bg-slate-100">
-//       <Navbar />
-//       <Routes>
-//         <Route path="/" element={<LibraryPage />} />
-//         <Route path="/add" element={<AddBookPage />} />
-//       </Routes>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -40,7 +20,6 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
 
-  // Optionally, we can have a separate state for the raw input to implement debouncing
   const [rawSearch, setRawSearch] = useState("");
 
   useEffect(() => {
@@ -50,12 +29,10 @@ export default function App() {
 
     return () => clearTimeout(timer);
   }, [rawSearch]);
-  // Optionally, we can have a separate state for the raw input to implement debouncing
 
 
   const processedBooks = books
   .filter((book) => {
-    // const status = book.status?.toLowerCase();
     if (filter === "reading") return book.status === "reading";
     if (filter === "finished") return book.status === "finished";
     return true; // all
@@ -85,30 +62,12 @@ export default function App() {
     }
   });
 
-
-
-  /* Load from localStorage once */
-  // useEffect(() => {
-  //   const stored = localStorage.getItem("books");
-  //   if (stored) {
-  //     setBooks(JSON.parse(stored));
-  //   }
-  // }, []);
-
-  /* Persist whenever books change */
-  // useEffect(() => {
-  //   localStorage.setItem("books", JSON.stringify(books));
-  // }, [books]);
-
   useEffect(() => {
     loadBooks();
   }, []);
 
   async function loadBooks() {
     try {
-      // const res = await API.get("/notes"); // ← backend endpoint
-      // setBooks(res.data); // ❌ destroys createdAt / updatedAt
-      // You call the API TWICE and the second call destroys normalization.
       const res = await API.get("/notes");
 
       const normalized = res.data.map(book => ({
@@ -117,18 +76,12 @@ export default function App() {
         updatedAt: book.updated_at ? Number(book.updated_at) : null,
       }));
 
-      setBooks(normalized); // ✅ correct
+      setBooks(normalized);
 
     } catch (err) {
       console.error(err);
     }
   }
-
-
-  // function addBook(book) {
-  //   setBooks((prev) => [book, ...prev]);
-  //   showToast("Book added");
-  // }
 
   async function addBook(book) {
     try {
@@ -146,12 +99,7 @@ export default function App() {
       console.error(err);
     }
   }
-
-  // function deleteBook(id) {
-  //   setBooks((prev) => prev.filter((book) => book.id !== id));
-  //   showToast("Book removed");
-  // }
-
+  
   async function deleteBook(id) {
     try {
       await API.delete(`/notes/${id}`);
@@ -180,23 +128,12 @@ export default function App() {
     );
   }
 
-
-  // function updateBook(updatedBook) {
-  //   setBooks((prev) =>
-  //     prev.map((book) =>
-  //       book.id === updatedBook.id ? { ...updatedBook, updatedAt: Date.now() } : book
-  //     )
-  //   );
-  // }
-  
-
   async function updateBook(updatedBook) {
     try {
       const res = await API.put(`/notes/${updatedBook.id}`, updatedBook);
 
       setBooks(prev =>
         prev.map(book =>
-          // book.id === updatedBook.id ? res.data : book
           book.id === updatedBook.id ? updatedBook : book
         )
       );
