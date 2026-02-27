@@ -7,14 +7,11 @@ import API from "../api";
 export default function EditBookPage({ books, updateBook }) {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  // const book = books.find((b) => b.id === id);
   const book = books.find((b) => b.id === Number(id));
 
   const [form, setForm] = useState({
     title: book?.title || "",
     author: book?.author || "",
-    // notes: book?.notes || "",
     content: book?.content || "",
     isbn: book?.isbn || "",
     status: book?.status || "reading",
@@ -45,27 +42,6 @@ export default function EditBookPage({ books, updateBook }) {
     });
   }
 
-//   function handleSubmit(e) {
-//     e.preventDefault();
-
-//     const isbn = cleanISBN(form.isbn?.trim());
-//     // const isbn = form.isbn?.trim();
-
-//     updateBook({
-        // ...book,
-        // ...form,
-        // content: form.notes,   // ← CRITICAL FIX
-        // isbn,
-        // coverUrl: isbn
-        // ? `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
-        // : null,
-        // rating: Number(form.rating),
-        // updatedAt: Date.now(),
-//     });
-
-//     navigate("/");
-//  }
-
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -73,15 +49,6 @@ async function handleSubmit(e) {
   const isbn = cleanISBN(form.isbn?.trim());
 
   const payload = {
-    // ...book,
-    // ...form,
-    // content: form.content,   // ← CRITICAL FIX
-    // isbn,
-    // coverUrl: isbn
-    // ? `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`
-    // : null,
-    // rating: Number(form.rating),
-    // updatedAt: Date.now(),
     title: form.title,
     author: form.author,
     content: form.content,
@@ -99,7 +66,7 @@ async function handleSubmit(e) {
       updatedAt: res.data.updated_at ? Number(res.data.updated_at) : null,
     };
 
-    updateBook(updatedBook);   // ⭐ MAGIC LINE
+    updateBook(updatedBook);   
 
     navigate("/");
   } catch (err) {
@@ -124,9 +91,6 @@ async function handleSubmit(e) {
       >
         ← Back
       </button>
-      {/* <h1 className="text-2xl font-semibold mb-6">
-        Edit Book
-      </h1> */}
 
       <form
         onSubmit={handleSubmit}
@@ -168,8 +132,6 @@ async function handleSubmit(e) {
         />
 
         <textarea
-          // name="notes"
-          // value={form.notes}
           name="content"
           value={form.content}
           onChange={handleChange}
@@ -185,7 +147,6 @@ async function handleSubmit(e) {
           >
             <option value="reading">Reading</option>
             <option value="finished">Finished</option>
-            {/* <option>Planned</option> */}
           </select>
 
           <select
@@ -210,3 +171,4 @@ async function handleSubmit(e) {
     </div>
   );
 }
+
