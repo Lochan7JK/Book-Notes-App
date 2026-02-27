@@ -79,24 +79,12 @@ Frontend runs on:
 -Proper project structure for production
 
 ###📸 Future Improvements
--🔐 User authentication (JWT)
--📊 Reading statistics dashboard
--📁 Pagination
--🌙 Dark mode
 📈 Future Improvements
-
 🔐 User authentication (JWT)
-
-⭐ Better rating UI
-
 📊 Reading dashboard
-
 📁 Pagination
-
 🌙 Dark mode
-
-🔍 Search & filtering
--🔍 Would love your opinion...
+🔍 Would love your opinion...
 
 👨‍💻 Your fellow mate
 -Lochan Singoria
