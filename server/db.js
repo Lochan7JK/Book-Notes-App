@@ -5,6 +5,19 @@ dotenv.config();
 
 const { Pool } = pkg;
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: isProduction
+    ? { rejectUnauthorized: false }
+    : false,
 });
+
+// export const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
+
